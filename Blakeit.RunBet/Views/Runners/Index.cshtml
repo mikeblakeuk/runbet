@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Blakeit.RunBet.Models.Runner>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bupa Great South Run - Runner</h2>
+
+@foreach (var item in Model) {
+    <div>
+        <div>
+            @Html.DisplayFor(modelItem => item.DisplayName)
+        </div>
+        <div>
+            @Html.ActionLink("Bet", "MakeBet", new { id=item.ID }) |
+        </div>
+    </div>
+}

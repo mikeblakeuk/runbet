@@ -1,0 +1,72 @@
+﻿@model Blakeit.RunBet.Models.Guess
+
+@{
+    ViewBag.Title = "MakeBet";
+}
+
+<h2>MakeBet</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Guess for Runner '{0}'</h4>
+        <hr />
+
+        <div class="input-append bootstrap-timepicker">
+            <input id="timepicker1" type="text" class="input-small">
+            <span class="add-on"><i class="icon-time"></i></span>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Hours, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Hours)
+                @Html.ValidationMessageFor(model => model.Hours)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Minutes, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Minutes)
+                @Html.ValidationMessageFor(model => model.Minutes)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Seconds, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Seconds)
+                @Html.ValidationMessageFor(model => model.Seconds)
+            </div>
+        </div>
+
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+
+}
+
+
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('#timepicker1').timepicker();
+    });
+</script>*@
